@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Knight from "./Knight";
+import Knight from "./Board/Knight";
+import Square from "./Board/Square";
 
 class App extends Component {
   render() {
@@ -14,7 +15,10 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <Knight />
+        <Square black={true}>
+          <Knight />
+        </Square>
+        
       </div>
     );
   }
