@@ -10,12 +10,31 @@ export default class Board extends Component {
         ).isRequired
     }
 
+    renderSquare(x, y) {
+        const black = (x + y) % 2 === 1;
+        console.log('black: ', black);
+
+        const [knightX, knightY] = this.props.knightPosition;
+        const piece = (x === knightX && knightY === y) ?
+            <Knight /> :
+            null;
+        
+        return (
+            <Square black={black}>
+                {piece}
+            </Square>
+        );
+    }
+
     render() {
         return (
-            <div>
-                <Square black>
-                    <Knight />
-                </Square>
+            <div style={{
+                width: '100%',
+                height: '100%'
+            }}>
+                {this.renderSquare(0,0)}
+                {this.renderSquare(1,0)}
+                {this.renderSquare(2,0)}
             </div>
         )
         
