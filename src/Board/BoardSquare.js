@@ -5,24 +5,6 @@ import { canMoveKnight, moveKnight } from "../Game";
 import { ItemTypes } from "./types";
 import { DropTarget } from "react-dnd";
 
-const squareTarget = {
-    canDrop(props) {
-        return canMoveKnight(props.x, props.y);
-    },
-
-    drop(props, monitor) {
-        moveKnight(props.x, props.y);
-    }
-}
-
-function collect(connect, monitor) {
-    return {
-        connectDropTarget: connect.dropTarget(),
-        isOver: monitor.isOver(),
-        canDrop: monitor.canDrop()
-    };
-}
-
 class BoardSquare extends Component {
 
     renderOverlay(color) {
@@ -67,5 +49,23 @@ BoardSquare.propTypes = {
     connectDropTarget: PropTypes.func.isRequired,
     isOver: PropTypes.bool.isRequired
 };
+
+const squareTarget = {
+    canDrop(props) {
+        return canMoveKnight(props.x, props.y);
+    },
+
+    drop(props, monitor) {
+        moveKnight(props.x, props.y);
+    }
+}
+
+function collect(connect, monitor) {
+    return {
+        connectDropTarget: connect.dropTarget(),
+        isOver: monitor.isOver(),
+        canDrop: monitor.canDrop()
+    };
+}
 
 export default DropTarget(ItemTypes.KNIGHT, squareTarget, collect)(BoardSquare);

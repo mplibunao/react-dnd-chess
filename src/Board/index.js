@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Knight from "./Knight";
 import BoardSquare from "./BoardSquare";
 import Square from "./Square";
-import { moveKnight, canMoveKnight } from "../Game";
+// import { moveKnight, canMoveKnight } from "../Game";
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from "react-dnd-html5-backend"
 
@@ -32,12 +32,11 @@ class Board extends Component {
 		return isKnightHere ? <Knight /> : <div>1</div>;
     }
 
-    handleSquareClick(toX, toY) {
-        if (canMoveKnight(toX, toY)) {
-            moveKnight(toX, toY);
-        }
-        
-    }
+    // handleSquareClick(toX, toY) {
+    //     if (canMoveKnight(toX, toY)) {
+    //         moveKnight(toX, toY);
+    //     }
+    // }
 
     render() {
         const squares = [];
@@ -45,16 +44,17 @@ class Board extends Component {
             squares.push(this.renderSquare(i));
         }
         return (
-            <div className="Board" style={{
-                width: '100%',
-                height: '100%',
-                display: 'flex',
-                flexWrap: 'wrap',
-            }}>
-                {squares}
+            <div className="container">
+                <div className="Board" style={{
+                    width: '100%',
+                    height: '100%',
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                }}>
+                    {squares}
+                </div>
             </div>
-        )
-        
+        );
     }
 }
 
