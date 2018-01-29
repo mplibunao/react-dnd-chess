@@ -5,6 +5,7 @@ import { DragSource} from "react-dnd";
 
 const knightSource = {
     beginDrag(props) {
+        console.log('props: ', props);
         return {};
     }
 };

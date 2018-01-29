@@ -29,7 +29,7 @@ class Board extends Component {
     renderPiece(x, y) {
         const [knightX, knightY] = this.props.knightPosition;
 		const isKnightHere = x === knightX && y === knightY;
-		return isKnightHere ? <Knight /> : <div>1</div>;
+		return isKnightHere ? <Knight type="knight" /> : <div>1</div>;
     }
 
     // handleSquareClick(toX, toY) {
